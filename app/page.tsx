@@ -11,6 +11,7 @@ import Facing from "./sections/home/Facing/Facing";
 import Improvement from "./sections/home/Improvement/Improvement";
 import Older from "./sections/home/Older/Older";
 import Apartments from "./sections/home/Apartments/Apartments";
+import ReadySection from "./sections/home/Ready/ReadySection";
 import Cookies from "./components/layout/Cookies/Cookies";
 import Preloader from "./components/layout/Preloader/Preloader";
 
@@ -24,7 +25,7 @@ export default async function Home() {
 
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
       <Header />
       <HeroHome 
       heroData={{
@@ -51,6 +52,7 @@ export default async function Home() {
            slides: api.environmentSlider
          }}
       />
+      <ReadySection />
       <Architecture 
         architectureData={{
           title: api.architectureTitle,

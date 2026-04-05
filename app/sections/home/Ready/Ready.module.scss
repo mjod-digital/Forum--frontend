@@ -1,0 +1,154 @@
+.root {
+    height: 900rem;
+    position: relative;
+    margin-bottom: 120rem;
+    background-image: url('/images/home/ready-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.content {
+    position: absolute;
+    background-image: url('/images/home/ready-frame.png');
+    height: 900rem;
+    top: 0rem;
+    bottom: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 600rem;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 42rem;
+    transform: translateY(-50%);
+    text-align: start;
+    color: var(--main-white);
+    max-width: 415rem;
+}
+.title {
+    margin-bottom: 40rem;
+}
+.title span, .modalTitle span, .successText span {
+    color: var(--pink);
+}
+
+.paragraph {
+    margin-bottom: 40rem;
+}
+
+.btn {
+    padding: 10rem 67.5rem;
+    text-transform: uppercase;
+    color: #232323;
+    border: 1rem solid #232323;
+    border-radius: 20rem;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: rgba(35, 35, 35, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: modalFadeIn 0.3s ease;
+}
+
+.modalContent {
+    background-color: var(--background-gray);
+    width: 1060rem;
+    padding: 138.5rem 220rem;
+}
+
+.modalTitle {
+    margin-bottom: 60rem;
+}
+
+.success {
+    max-width: 520rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.successText {
+    margin-bottom: 40rem;
+}
+
+.successBtn {
+    width: 100%;
+    padding: 10rem 67.5rem;
+    text-transform: uppercase;
+    color: #232323;
+    border: 1rem solid #232323;
+    border-radius: 20rem;
+}
+
+.close {
+    position: absolute;
+    top: 171rem;
+    right: 236rem;
+}
+
+@media (max-width: 768px) {
+    .root {
+        background-image: url('/images/home/ready-bg-mob.jpg');
+    }
+    .modalContent {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20rem;
+    }
+    .close {
+        top: 20rem;
+        right: 20rem;
+    }
+    .text {
+        top: unset;
+        bottom: 65rem;
+        transform: unset;
+        text-align: center;
+        max-width: unset;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+    }
+    .title {
+        max-width: 230rem;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 125%;
+        margin-bottom: 20rem;
+    }
+    .paragraph {
+        margin-bottom: 30rem;
+    }
+    .modalTitle {
+        max-width: 300rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .content {
+        background-image: url('/images/home/ready-frame-mob.png');
+        width: 100%;
+        background-position: bottom;
+    }
+}

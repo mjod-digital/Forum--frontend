@@ -8,7 +8,12 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Checkbox from '../Checkbox/Checkbox';
 
-function ContactForm() {
+interface ContactFormProps {
+    buttonText?: string;
+    onSuccess?: () => void;
+}
+
+function ContactForm({ buttonText, onSuccess }: ContactFormProps) {
     const router = useRouter();
     const inputRef = useRef<HTMLInputElement>(null);
     const [name, setName] = useState('');
@@ -147,7 +152,11 @@ function ContactForm() {
                         console.log('[Comagic] Success! Now sending to Mindbox...');
                         // Отправляем данные в Mindbox
                         sendToMindbox(name, phone, marketingConsent);
-                        router.push('/success');
+                        if (onSuccess) {
+                            onSuccess();
+                        } else {
+                            router.push('/success');
+                        }
                     } else {
                         console.error('[Comagic] Request failed');
                         setIsSubmitting(false);
@@ -156,8 +165,10 @@ function ContactForm() {
             );
         } else {
             console.warn('[Comagic] Not available, sending only to Mindbox...');
-            // Если Comagic недоступен, всё равно отправляем в Mindbox
             sendToMindbox(name, phone, marketingConsent);
+            if (onSuccess) {
+                onSuccess();
+            }
             setIsSubmitting(false);
         }
     };
@@ -211,7 +222,7 @@ function ContactForm() {
                 </div>
                 <Button 
                     type='submit'>
-                        {isSubmitting ? 'Отправка...' : 'Отправить'}
+                        {isSubmitting ? 'Отправка...' : (buttonText || 'Отправить')}
                 </Button>
     
             </form>
