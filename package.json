@@ -12,7 +12,7 @@
     "@panzoom/panzoom": "^4.6.0",
     "classnames": "^2.5.1",
     "inputmask": "^5.0.9",
-    "next": "15.5.9",
+    "next": "^16.2.3",
     "react": "19.1.4",
     "react-dom": "19.1.4",
     "swiper": "^11.2.10"
