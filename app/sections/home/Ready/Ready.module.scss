@@ -74,6 +74,7 @@
     background-color: var(--background-gray);
     width: 1060rem;
     padding: 138.5rem 220rem;
+    position: relative;
 }
 
 .modalTitle {
@@ -101,13 +102,14 @@
 
 .close {
     position: absolute;
-    top: 171rem;
-    right: 236rem;
+    top: 46rem;
+    right: 46rem;
 }
 
 @media (max-width: 768px) {
     .root {
         background-image: url('/images/home/ready-bg-mob.jpg');
+        margin-bottom: 60rem;
     }
     .modalContent {
         height: 100%;
@@ -150,5 +152,6 @@
         background-image: url('/images/home/ready-frame-mob.png');
         width: 100%;
         background-position: bottom;
+        transform: translateY(1rem);
     }
 }
