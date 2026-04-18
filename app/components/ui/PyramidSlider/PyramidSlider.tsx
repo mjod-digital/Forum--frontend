@@ -79,14 +79,14 @@ function PyramidSlider({pyramidSliderData}: PyramidSliderProps) {
                     </SwiperSlide>
                     ))}
                 </Swiper>
-                 {/* <div className={styles.pyramidSlider__bg}>
+                 <div className={styles.pyramidSlider__bg}>
                     <Image
                     src={'/images/pyramid-frame.svg'} 
                     alt=""
                     fill
                     style={{ objectFit: "contain" }}
                     />
-                </div> */}
+                </div>
             </div>
 
             <Swiper
