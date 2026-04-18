@@ -10,7 +10,7 @@ import Checkbox from '../Checkbox/Checkbox';
 
 interface ContactFormProps {
     buttonText?: string;
-    onSuccess?: () => void;
+    onSuccess?: (data: { name: string; phone: string; marketingConsent: boolean }) => void;
 }
 
 function ContactForm({ buttonText, onSuccess }: ContactFormProps) {
@@ -150,10 +150,9 @@ function ContactForm({ buttonText, onSuccess }: ContactFormProps) {
                     console.log('[Comagic] Response:', response);
                     if (response.success) {
                         console.log('[Comagic] Success! Now sending to Mindbox...');
-                        // Отправляем данные в Mindbox
                         sendToMindbox(name, phone, marketingConsent);
                         if (onSuccess) {
-                            onSuccess();
+                            onSuccess({ name, phone, marketingConsent });
                         } else {
                             router.push('/success');
                         }
@@ -167,7 +166,7 @@ function ContactForm({ buttonText, onSuccess }: ContactFormProps) {
             console.warn('[Comagic] Not available, sending only to Mindbox...');
             sendToMindbox(name, phone, marketingConsent);
             if (onSuccess) {
-                onSuccess();
+                onSuccess({ name, phone, marketingConsent });
             }
             setIsSubmitting(false);
         }

@@ -18,6 +18,16 @@ export default function ReadyModal({ onClose }: ReadyModalProps) {
         window.open(PRESENTATION_URL, '_blank');
     };
 
+    const handleFormSuccess = (data: { name: string; phone: string; marketingConsent: boolean }) => {
+        setIsSuccess(true);
+
+        fetch('/api/send-presentation-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        }).catch((err) => console.error('[Email] Send failed:', err));
+    };
+
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
@@ -29,11 +39,11 @@ export default function ReadyModal({ onClose }: ReadyModalProps) {
                 {!isSuccess ? (
                     <div className={styles.modalForm}>
                         <p className={classNames(styles.modalTitle, 'title-b')}>
-                            ОСтавьте контакты и получите <span>презентацию</span>
+                            ОСтавьте контакты и получите <span>презентацию</span>
                         </p>
                         <ContactForm
                             buttonText="Получить презентацию"
-                            onSuccess={() => setIsSuccess(true)}
+                            onSuccess={handleFormSuccess}
                         />
                     </div>
                 ) : (
