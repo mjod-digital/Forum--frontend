@@ -105,8 +105,12 @@ input[type='file'] {
 
 html {
 	font-size: calc(1vw / 14.4);
-	overflow-x: hidden;
 	scroll-behavior: smooth;
+	/* hidden ломает backdrop-filter у fixed в Chrome; clip рвёт гориз. скролл без того же бага */
+	overflow-x: hidden;
+	@supports (overflow: clip) {
+		overflow-x: clip;
+	}
 }
 
 
@@ -117,6 +121,9 @@ body {
 	overflow-x: hidden;
 	scrollbar-width: none; 
 	-ms-overflow-style: none; 
+	@supports (overflow: clip) {
+		overflow-x: clip;
+	}
 }
 
 body::-webkit-scrollbar {

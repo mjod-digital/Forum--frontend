@@ -7,20 +7,15 @@
         transform: translateX(-50%);
     }
     
-    &__hidden {
-        transform: translateY(-110rem);
-    }
-    
     &__row {
         transition: .3s ease-in;
         
         // Новые переменные для стеклянного эффекта
-        --glass-blur: 24rem;
         --glass-sat: 1.35;
-        --glass-fill-1: rgba(255, 255, 255, 0.25);
-        --glass-fill-2: rgba(255, 255, 255, 0.10);
-        --glass-border: rgba(255, 255, 255, 0.35);
-        --glass-shadow: rgba(0, 0, 0, 0.15);
+        --glass-fill-1: rgba(255, 255, 255, 0.42);
+        --glass-fill-2: rgba(255, 255, 255, 0.18);
+        --glass-border: rgba(255, 255, 255, 0.45);
+        --glass-shadow: rgba(0, 0, 0, 0.12);
 
         position: fixed;
         inset: 0 auto auto 0;
@@ -39,13 +34,9 @@
             0 8rem 24rem var(--glass-shadow),
             inset 0 1rem 0 rgba(255, 255, 255, 0.3);
 
-        // Бэкдроп фильтр для дополнительного эффекта
-        backdrop-filter: 
-            blur(var(--glass-blur)) 
-            saturate(var(--glass-sat));
-        -webkit-backdrop-filter: 
-            blur(var(--glass-blur)) 
-            saturate(var(--glass-sat));
+        /* px: blur в rem от html font-size часто даёт слабый/нестабильный эффект; clip на html/body чинит сэмплинг */
+        -webkit-backdrop-filter: blur(22px) saturate(var(--glass-sat));
+        backdrop-filter: blur(22px) saturate(var(--glass-sat));
 
         padding: 19rem 60rem;
         
@@ -79,6 +70,10 @@
                 }
             }
         }
+    }
+
+    &__hidden {
+        transform: translateY(-110rem);
     }
 
     @media only screen and (max-width: 500px) {
